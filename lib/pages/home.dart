@@ -45,17 +45,44 @@ class _HomePageState extends State<HomePage> {
               ),
               SizedBox(height: 15,),
               Container(
-                height: 150,
+                height: 120,
                 //color: Colors.greenAccent,
                 child: ListView.separated(
                   itemCount: categories.length,
                   scrollDirection: Axis.horizontal,
+                  padding: EdgeInsets.only(
+                    left: 20,
+                    right: 20
+                  ),
                   separatorBuilder: (context, index) => SizedBox(width: 25,), //untuk scroll kanan kiri
                   itemBuilder: (context, index) {
                     return Container(
                       width: 100,
                       decoration: BoxDecoration(
-                        color: categories[index].boxColor
+                        color: categories[index].boxColor.withOpacity(0.3),
+                        borderRadius: BorderRadius.circular(16)
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle
+                            ),
+                            child: SvgPicture.asset(categories[index].iconPath),
+                          ),
+                          Text(
+                            categories[index].name,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black,
+                              fontSize: 14
+                            ),
+                          )
+                        ],
                       ),
                     );
                   }
